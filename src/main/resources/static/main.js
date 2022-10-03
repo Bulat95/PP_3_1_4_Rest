@@ -1,7 +1,3 @@
-
-
-
-
 // header
 const renderHeaderInfo = (user) => { // функция
     let content = `
@@ -16,8 +12,8 @@ const renderHeaderInfo = (user) => { // функция
         `;
     });
     content += '</span>';
-    document.getElementById('headerInfo').innerHTML = content; // айдишник находится
-} // функция
+    document.getElementById('headerInfo').innerHTML = content;
+}
 
 const sendRequestInfo = (method, url, body = null) => {
     const options = {
@@ -36,14 +32,14 @@ const sendRequestInfo = (method, url, body = null) => {
         }
         return response.json();
     });
-} // функция
+}
 
 const getAlertInfo = (message) => {
     const alert = document.createElement('div');
     alert.className = 'alert alert-danger alert-dismissible role="alert" fade show';
     alert.innerHTML = `<div class="fs-5">${message}</div><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>`;
     messages.appendChild(alert);
-} // функция
+}
 
 const renderUserInfoTableRowContent = (user) => {
     let content = `
@@ -62,23 +58,25 @@ const renderUserInfoTableRowContent = (user) => {
     });
     content += '</td>';
     document.getElementById('userInfoTableRow').innerHTML = content;
-} // функция
+}
 
-const requestUrl = 'http://localhost:8080/api'; // адрес бэкенда
+// url
+const requestUrl = 'http://localhost:8080/api';
 
+// func
 if (!document.querySelector('.messages')) {
     const container = document.createElement('div');
     container.classList.add('messages');
     container.style.cssText = 'position: fixed; top: 50%; left: 0; right: 0; max-width: 240px; margin: 0 auto;';
     document.body.appendChild(container);
-} // добавили блок
+}
 
 
-const messages = document.querySelector('.messages'); // инициализация переменной messages
+const messages = document.querySelector('.messages');
 
-sendRequestInfo('GET', '/user').then(user => renderHeaderInfo(user)) //вызов функции на 22 строке
+sendRequestInfo('GET', '/user').then(user => renderHeaderInfo(user))
 
-sendRequestInfo('GET', '/user').then(user => renderUserInfoTableRowContent(user)) //вызов функции на 22 строке
+sendRequestInfo('GET', '/user').then(user => renderUserInfoTableRowContent(user))
 
 if (document.getElementById('v-pills-admin')) {
     const renderAllUsersTableContent = (users) => {
